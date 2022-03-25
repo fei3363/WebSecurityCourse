@@ -1,7 +1,7 @@
-
+# 部屬 SQL injection LAB
 
 ## 安裝 docker 
-1. 可以參考 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+- 可以參考 https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
 
 - use root
 ```
@@ -40,12 +40,12 @@ docker-compose --version
 ```
 
 ## 建立網站資料夾
+- 如專案資料夾內的檔案
 ```
 .
 ├── db
 │   └── db.sql
 ├── docker-compose.yml
-├── robots.txt
 ├── web-image
 │   └── Dockerfile
 └── www
@@ -55,7 +55,24 @@ docker-compose --version
     └── robots.txt
 ```
 
-## 編輯 nginx 
+## 執行 docker-compose
+- 確認資料夾有 docker-compose.yml 
+```
+$ ls
+db docker-compose.yml web-image www
+```
+- 利用 docker-compose 執行 
+  - `up` 執行
+  - `-d` 在背景執行
+  - `--build` 進行編譯 
+```
+$ docker-compose up -d --build
+```
+
+
+## 外網掛域名的步驟
+
+### 編輯 nginx 
 ```
 apt install nginx -y
 vim /etc/nginx/sites-enabled/website
@@ -64,14 +81,10 @@ add hostname: test.fei.works
 service nginx restart
 ```
 
-
-## 設定 domain
+### 設定 domain
 - A 紀錄 IP
 
-
-
-
-## 安裝 cret
+### 安裝 cret
 - https://certbot.eff.org/
 - https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
 
